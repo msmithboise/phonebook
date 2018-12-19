@@ -7,14 +7,24 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Phonebook.Models;
 
-namespace phonebook
+namespace Phonebook
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+            var dbContext = new Phonebook11Context();
+            var contacts = dbContext.Contacts.ToList();
+            foreach (var c in contacts)
+            {
+                System.Console.WriteLine($"Name:{c.Name}");
+                System.Console.WriteLine($"Phone Number:{c.Number}");
+                System.Console.WriteLine($"Address:{c.Address}");
+                System.Console.WriteLine($"Email:{c.Email}");
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

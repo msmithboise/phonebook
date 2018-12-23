@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 
 namespace Repository
 {
-    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : Phonebook.IRepositoryBase<T> where T : class
     {
         protected Phonebook11Context Phonebook11Context { get; set; }
 

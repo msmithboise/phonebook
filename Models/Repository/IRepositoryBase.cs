@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
-namespace Contacts
+namespace Phonebook
 {
     public interface IRepositoryBase<T>
     {

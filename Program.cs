@@ -9,12 +9,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Phonebook.Models;
 
+
 namespace Phonebook
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+            Contact greet = new Contact();
+            
+            
+
             CreateWebHostBuilder(args).Build().Run();
 
         }

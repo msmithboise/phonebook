@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Phonebook.Models;
 
 namespace Phonebook.Models
 {
-    public partial class Contact
+    
+    public class Contact
     {
         public int ContactId { get; set; }
         public string Name { get; set; }
@@ -11,9 +14,7 @@ namespace Phonebook.Models
         public string Address { get; set; }
         public string Email { get; set; }
     
-    public void Greet(){
-        System.Console.WriteLine("Hey");
-    }
+    
     }
 
 

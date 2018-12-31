@@ -6,9 +6,9 @@ using System.ComponentModel.DataAnnotations;
 namespace Phonebook.Models
 {
     [Table("contacts")]
-    public partial class Contacts
+    public class Contacts
     {
-        private const string V = "contacts";
+        
 
         public int ContactId { get; set; }
         public string Name { get; set; }

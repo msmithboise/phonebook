@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Phonebook.Models
 {
-    public partial class Phonebook11Context : DbContext
+    public class Phonebook11Context : DbContext
     {
         public virtual DbSet<Contacts> Contacts { get; set; }
 

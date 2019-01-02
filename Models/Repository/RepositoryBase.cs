@@ -78,5 +78,6 @@ namespace Repository
         {
             this.Context.Set<TEntity>().RemoveRange(entity);
         }
+    }
 
 }

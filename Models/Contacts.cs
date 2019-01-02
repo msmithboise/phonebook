@@ -15,5 +15,9 @@ namespace Phonebook.Models
         public int Number { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
+
+        public interface IContactRepository
+        {
+        }
     }
 }

@@ -8,45 +8,75 @@ using System.Linq.Expressions;
 
 
 
+
 namespace Repository
 {
-    public abstract class RepositoryBase<T> : Phonebook.IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<TEntity> : Phonebook.IRepositoryBase<TEntity> where TEntity : class
     {
-        protected Phonebook11Context Phonebook11Context { get; set; }
+        protected readonly Phonebook11Context Phonebook11Context;
 
         public RepositoryBase(Phonebook11Context phonebook11Context)
         {
             this.Phonebook11Context = phonebook11Context;
         }
-
-        public IEnumerable<T> FindAll()
+        public TEntity GetEntity(int contactId)
         {
-            return this.Phonebook11Context.Set<T>();
+            return Phonebook11Context.Set<TEntity>().Find(contactId);
         }
 
-        public IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        public IEnumerable<TEntity> FindAll()
         {
-            return this.Phonebook11Context.Set<T>().Where(expression);
+            return this.Phonebook11Context.Set<TEntity>();
         }
 
-        public void Create(T entity)
+        public IEnumerable<TEntity> FindByCondition(Expression<Func<TEntity, bool>> expression)
         {
-            this.Phonebook11Context.Set<T>().Add(entity);
+            return this.Phonebook11Context.Set<TEntity>().Where(expression);
         }
 
-        public void Update(T entity)
+        public void Create(TEntity entity)
         {
-            this.Phonebook11Context.Set<T>().Update(entity);
+            this.Phonebook11Context.Set<TEntity>().Add(entity);
         }
 
-        public void Delete(T entity)
+        public void Update(TEntity entity)
         {
-            this.Phonebook11Context.Set<T>().Remove(entity);
+            this.Phonebook11Context.Set<TEntity>().Update(entity);
+        }
+
+        public void Delete(TEntity entity)
+        {
+            this.Phonebook11Context.Set<TEntity>().Remove(entity);
         }
 
         public void Save()
         {
             this.Phonebook11Context.SaveChanges();
         }
-    }
+
+
+        public void Add(TEntity entity)
+        {
+            this.Phonebook11Context.Set<TEntity>().Add(entity);
+        }
+        public IEnumerable<TEntity> GetAll()
+        {
+            return this.Phonebook11Context.Set<TEntity>().ToList();
+
+        }      
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        {
+            return this.Phonebook11Context.Set<TEntity>().Where(predicate);
+        }
+
+        public void Remove(TEntity entity)
+        {
+            this.Phonebook11Context.Set<TEntity>().Remove(entity);
+        }
+
+        public void RemoveRange(TEntity entity)
+        {
+            this.Phonebook11Context.Set<TEntity>().RemoveRange(entity);
+        }
+
 }

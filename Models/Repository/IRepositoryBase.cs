@@ -4,13 +4,32 @@ using System.Linq.Expressions;
 
 namespace Phonebook
 {
-    public interface IRepositoryBase<T>
+    public interface IRepositoryBase<TEntity> where TEntity : class
     {
-        IEnumerable<T> FindAll();
-        IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression);
-        void Create(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        IEnumerable<TEntity> FindAll();
+
+        TEntity GetEntity(int contactId);
+
+        void Add(TEntity entity);
+
+        IEnumerable<TEntity> Find(Expression<Func<TEntity,bool>> predicate);
+        
+        void Remove(TEntity entity);
+
+        void RemoveRange(TEntity entity);
+
+        IEnumerable<TEntity> GetAll();
+
+        IEnumerable<TEntity> FindByCondition(Expression<Func<TEntity, bool>> expression);
+        void Create(TEntity entity);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
         void Save();
     }
 }
+        
+        
+        
+        
+        
+    

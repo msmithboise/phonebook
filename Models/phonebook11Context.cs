@@ -7,7 +7,8 @@ namespace Phonebook.Models
 {
     public class Phonebook11Context : DbContext
     {
-        public virtual DbSet<Contacts> Contacts { get; set; }
+        
+        public DbSet<Contacts> Contacts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
